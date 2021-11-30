@@ -1,0 +1,89 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-image: url('../../assets/background.png');
+    background-size: cover;
+    margin-left: 90px;
+
+    .sign, form{
+        background-color:#2c2f33;
+        color: #ffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 500px;
+        border-radius: 30px;
+    }
+
+    .sign{
+        h2{
+            font-weight: 500;
+            font-size: 2rem;
+            margin-bottom: 2px;
+        }
+        p{
+            font-style: italic;
+            font-weight: 100;
+            font-size: 0.8rem;
+            color: darkgray;            
+        }
+        .text-danger{
+            width: 400px;
+            color: crimson;
+        }
+        transition: transform 330ms ease-in-out;
+    }
+
+    
+
+    form{
+        margin-bottom: 30px;
+        button{
+            font-family: 'Cascadia code';
+            font-weight: bold;
+            color: black;
+            margin: 20px;
+            width: 350px;
+            height: 40px;
+            border-radius: 5px;
+            border-color: darkseagreen;
+            background-color: lightgreen;
+            cursor: pointer;
+            transition: transform 330ms ease-in-out;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+
+    }
+
+    .form-box{
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        label{
+            color: gainsboro;
+            margin: 5px;
+        }
+        input{
+            width: 350px;
+            height: 30px;
+            background-color: #23272a;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+    }
+    
+}
+

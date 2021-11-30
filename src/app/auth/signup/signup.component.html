@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="sign">
+        <h2>Create your account</h2>
+        <p>We're so excited to have you with us</p>
+        <form [formGroup]="signUpForm"  (ngSubmit)="onSubmit()">
+            <div class="form-box">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-box">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+            </div>
+            <button type="submit">SignUp</button>
+            <a routerLink="/auth/signin">You already have an account ?</a>
+        </form>
+        <p class="text-danger">{{ errorMessage }}</p>
+    </div>
+</div>

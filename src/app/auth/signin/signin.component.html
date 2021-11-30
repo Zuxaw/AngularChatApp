@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="sign">
+        <h2>Welcome back!</h2>
+        <p>Nice to see you again</p>
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            <div class="form-box">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-box">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+            </div>
+            <button type="submit">Login</button>
+            <p class="text-danger">{{ errorMessage }}</p>
+        </form>
+    </div>
+</div>

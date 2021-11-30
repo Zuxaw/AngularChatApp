@@ -1,0 +1,41 @@
+.container{
+    height: 100%;
+    background-image: url('../../assets/background.png');
+    background-size: cover;
+    margin-left: 90px;
+
+    .description{
+        padding-top: 4%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+
+        .titre{
+            font-weight: 800;
+            font-size: 3rem;
+        }
+        p{
+            text-indent: 20px;
+            text-align: center;
+            width: 50%;
+            font-size: 1.5rem;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 50px;
+            font-size: 1.5rem;
+            padding: 1rem 8rem 1rem;
+            background-color: #23272a;
+            border-radius: 15px;
+            transition: transform 330ms ease-in-out;
+        }
+
+        a:hover{
+            transform: scale(1.1);
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<div class="container">
+    <h1>User Profile</h1>
+    <img *ngIf="user.photoURL" [src]="user.photoURL" class="profile-picture">
+    <i class="fas fa-user profile-picture" *ngIf="!user.photoURL"></i>
+    <p>UserName: {{user.displayName}}</p>
+    <button (click)="onClick()">test</button>
+</div>
