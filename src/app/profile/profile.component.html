@@ -3,5 +3,7 @@
     <img *ngIf="user.photoURL" [src]="user.photoURL" class="profile-picture">
     <i class="fas fa-user profile-picture" *ngIf="!user.photoURL"></i>
     <p>UserName: {{user.displayName}}</p>
+    <p>{{ toTranslate }}</p>
+    <button (click)="onTranslate()">Translate</button>
     <button (click)="onClick()">test</button>
 </div>
