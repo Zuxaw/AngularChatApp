@@ -3,7 +3,7 @@
     z-index: 1;
     background-color: #23272a;
     height: 100%;
-    
+
     width: 90px;
     display: flex;
     flex-direction: column;
@@ -12,16 +12,19 @@
         margin-left: 10px;
         list-style: none;
         display: flex;
-        align-items: center;
+        align-items: baseline;
         .description{
-            margin-left: 20px;
+            position: absolute;
+            margin-left: 100px;
             background-color: black;
             color: white;
             padding: 0.5em 2em 0.5em;
             border-radius: 0.5rem;
+            max-height: 250px;
         }
     }
     a{
+        font-size: 0.7rem;
         cursor: pointer;
         margin: 5px;
         list-style: none;
@@ -45,11 +48,11 @@
         .logout{
             background-color: #CE1212;
         }
-        
+
     }
 
     .bot{
-        
+
         position: absolute;
         bottom: 5%;
     }
@@ -57,5 +60,6 @@
     .active {
         background-color: #7289da;
     }
+
 }
 
