@@ -3,6 +3,7 @@
         <a routerLink="home" routerLinkActive="active"><i class="fas fa-home"></i></a>
         <p *ngIf="selected==='home'" class="description">Home</p>
     </li>
+    <translate-button></translate-button>
     <li (mouseover)="onSelect('profile')" (mouseout)="onSelect(null)" *ngIf="isAuth">
         <a routerLink="profile" routerLinkActive="active" class="profile"><i class="fas fa-user"></i></a>
         <p *ngIf="selected==='profile'" class="description">Profile</p>

@@ -1,0 +1,7 @@
+<li (mouseover)="onSelect('language')" (mouseout)="onSelect(null)" (click)="onSelectTranslation()">
+  <a [ngClass]="{'translated': translation_selected}"><i class="fas fa-language"></i></a>
+  <p *ngIf="selected==='language'" class="description" >{{ 'header.langage' | translate }}</p>
+  <p *ngIf="translation_selected" class="description translation">
+    <app-translation></app-translation>
+  </p>
+</li>
