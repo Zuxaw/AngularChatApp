@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth'
+import 'firebase/compat/storage';
 import { Subject } from 'rxjs';
 import { User } from './user.model';
 
@@ -39,6 +40,29 @@ export class UserService {
       displayName: name,
       photoURL: photoURL,
     })
-    
+
   }
+
+  uploadFile(file: File,user: User) {
+    return new Promise(
+      (resolve, reject) => {
+        const upload = firebase.storage().ref()
+          .child('image/profile/' + user.email)
+          .put(file);
+        upload.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          ()=> {
+            console.log('Chargement ...');
+          },
+          (error) => {
+            console.log('Erreur de chargement : '+ error);
+            reject();
+          },
+          ()=>{
+            resolve(upload.snapshot.ref.getDownloadURL());
+          })
+      }
+    )
+  }
+
 }
+

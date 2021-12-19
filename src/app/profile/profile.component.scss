@@ -1,4 +1,25 @@
 .container{
     position: relative;
     margin-left: 90px;
+
+    .profile-box{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      form{
+        .profile-picture-box{
+          .profile-picture{
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        .upload-box{
+
+        }
+      }
+    }
 }
