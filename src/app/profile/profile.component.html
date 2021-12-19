@@ -1,21 +1,25 @@
 <div class="container">
   <div class="profile-box">
     <h1>User Profile</h1>
-    <form>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="profile-picture-box">
         <img *ngIf="user.photoURL" [src]="user.photoURL" class="profile-picture">
-        <i class="fas fa-user profile-picture" *ngIf="user.photoURL === ''"></i>
       </div>
-      <div class="upload-box" *ngIf="editMode">
-        <h4>Ajouter une photo</h4>
-        <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
-        <p class="text-success" *ngIf="fileUploaded">Fichier chargé</p>
-      </div>
-      <p>UserName: {{user.displayName}}</p>
-      <div class="button-box">
-        <button (click)="onEdit()" *ngIf="!editMode">Edit</button>
-        <button (click)="onSave()" *ngIf="editMode">Save</button>
-        <button (click)="onCancel()" *ngIf="editMode">Cancel</button>
+      <div class="information-box">
+        <div class="upload-box" *ngIf="editMode">
+          <p>Upload a new profile picture</p>
+          <input type="file" (change)="detectFiles($event)" class="inputfile" accept="image/*">
+        </div>
+        <p *ngIf="!editMode">UserName: {{user.displayName}}</p>
+        <div class="user-name-box" *ngIf="editMode">
+          <label for="username">UserName: </label>
+          <input type="text" id="username" name="username" [ngModel]="user.displayName">
+        </div>
+        <div class="button-box">
+          <button (click)="onEdit()" *ngIf="!editMode">Edit</button>
+          <button type="submit" *ngIf="editMode">Save</button>
+          <button (click)="onCancel()" *ngIf="editMode">Cancel</button>
+        </div>
       </div>
     </form>
   </div>

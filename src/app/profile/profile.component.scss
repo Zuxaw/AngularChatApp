@@ -1,27 +1,78 @@
-.container{
-    position: relative;
-    margin-left: 90px;
+.container {
+  background-color: #2c2f33;
+  position: relative;
+  margin-left: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
 
-    .profile-box{
+  .profile-box {
+    margin-top: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #23272a;
+    color: #ffff;
+    width: 600px;
+    border-radius: 30px;
+
+
+    form {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      margin-bottom: 30px;
 
-      form{
+      .button-box {
         display: flex;
-        align-items: center;
-        .profile-picture-box{
-          .profile-picture{
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
+
+      }
+
+      button {
+        font-family: 'Cascadia code';
+        font-weight: bold;
+        color: black;
+        margin: 10px;
+        width: 100px;
+        height: 40px;
+        border-radius: 5px;
+        border-color: darkseagreen;
+        background-color: lightgreen;
+        cursor: pointer;
+        transition: transform 330ms ease-in-out;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+
+      .user-name-box input {
+        padding: 5px;
+        color: white;
+        width: 250px;
+        height: 30px;
+        background-color: #2c2f33;
+        border-radius: 5px;
+        border: 1px solid black;
+      }
+
+      .profile-picture-box {
+        .profile-picture {
+          height: 150px;
+          width: 150px;
+          border-radius: 50%;
+          object-fit: cover;
         }
+      }
 
-        .upload-box{
-
+      .information-box {
+        margin: 20px;
+        div{
+          margin: 10px;
         }
       }
     }
+  }
 }

@@ -6,6 +6,7 @@ import 'firebase/compat/auth';
 import { User } from './user.model';
 import { Subscription } from 'rxjs';
 import { TranslationService } from '../translation/translation.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -13,11 +14,8 @@ import { TranslationService } from '../translation/translation.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-
-  user: User = {
-    displayName: '',
-    photoURL: '',
-  };
+  file: File;
+  user: User;
   userLoad: boolean = false;
   userSubscription: Subscription;
 
@@ -35,7 +33,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit(){
     firebase.auth().onAuthStateChanged( user => {
       if (user){
-        //Useful for the first connexion 
+        //Useful for the first connexion
         if (!user.displayName){
           this.editMode = true;
         }
@@ -63,7 +61,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.editMode = false;
   }
 
-  onSave(){
+  onSubmit(form: NgForm){
+    if(this.file){
+      this.onUploadFile(this.file);
+    }else{
+      this.userService.updateProfile(form.value['username']);
+    }
     this.editMode = false;
   }
 
@@ -74,15 +77,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
       (url: string) => {
         this.fileUrl = url;
         this.fileIsUploading = false;
-        this.fileUploaded = true;
-        this.userService.updateProfile(this.user.displayName, url);
+        this.userService.updateProfile(this.user.displayName , url);
         this.userService.emitUser();
       }
     )
   }
 
   detectFiles(event) {
-    this.onUploadFile(event.target.files[0]);
+    this.file = event.target.files[0];
+    this.fileUploaded = true;
+    // this.onUploadFile(event.target.files[0]);
   }
 
   async onClick(){
