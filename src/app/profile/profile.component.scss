@@ -8,6 +8,8 @@
       align-items: center;
 
       form{
+        display: flex;
+        align-items: center;
         .profile-picture-box{
           .profile-picture{
             height: 150px;
