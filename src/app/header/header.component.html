@@ -12,13 +12,13 @@
         <p *ngIf="selected==='message'" class="description">Chat</p>
     </li>
     <div class="bot">
+        <li (mouseover)="onSelect('signIn')" (mouseout)="onSelect(null)" *ngIf="!isAuth">
+          <a routerLink="auth/signin" routerLinkActive="active"><i class="fas fa-sign-in-alt"></i></a>
+          <p *ngIf="selected==='signIn'" class="description">SignIn</p>
+        </li>
         <li (mouseover)="onSelect('signUp')" (mouseout)="onSelect(null)" *ngIf="!isAuth">
             <a routerLink="auth/signup" routerLinkActive="active"><i class="fas fa-user-plus"></i></a>
             <p *ngIf="selected==='signUp'" class="description">SignUp</p>
-        </li>
-        <li (mouseover)="onSelect('signIn')" (mouseout)="onSelect(null)" *ngIf="!isAuth">
-            <a routerLink="auth/signin" routerLinkActive="active"><i class="fas fa-sign-in-alt"></i></a>
-            <p *ngIf="selected==='signIn'" class="description">SignIn</p>
         </li>
         <li (mouseover)="onSelect('LogOut')" (mouseout)="onSelect(null)" *ngIf="isAuth">
             <a (click)="onLogOut()"><i class="fas fa-sign-out-alt"></i></a>
