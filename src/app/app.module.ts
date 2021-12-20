@@ -24,6 +24,8 @@ const appRoutes: Routes= [
   {path: 'home', component: HomeComponent},
   {path: 'chat',component: ChatComponent},
   {path: 'profile',component: ProfileComponent},
+  {path: 'message',component: MessageComponent},
+  {path: 'language-settings',component: LanguageSettingComponent},
   {path: ' ', redirectTo: 'home'},
   {path: '**', redirectTo: 'home'}
 ]

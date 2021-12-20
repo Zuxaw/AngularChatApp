@@ -6,7 +6,7 @@
     <!-- language setting /begins-->
     <li (mouseover)="onSelect('language')" (mouseout)="onSelect(null)" (click)="onSelectLanguage()">
       <a [ngClass]="{'translated': language_selected}"><i class="fas fa-language"></i></a>
-      <p *ngIf="selected==='language'" class="description" >{{ 'header.langage' | translate }}</p>
+      <p *ngIf="selected==='language'" class="description" >{{ 'sign-in.deja-compte' | translate }}</p>
       <p *ngIf="language_selected" class="description translation">
         <app-language-setting></app-language-setting>
       </p>
