@@ -21,7 +21,8 @@ export class AppComponent {
       storageBucket: "stksmessenger.appspot.com",
       messagingSenderId: "538513952885",
       appId: "1:538513952885:web:732cc8292492924b5ba83c",
-      measurementId: "G-49L9RG606J"
+      measurementId: "G-49L9RG606J",
+      databaseURL: "https://stksmessenger-default-rtdb.europe-west1.firebasedatabase.app/"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);

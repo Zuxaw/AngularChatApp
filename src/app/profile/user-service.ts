@@ -51,10 +51,10 @@ export class UserService {
           .put(file);
         upload.on(firebase.storage.TaskEvent.STATE_CHANGED,
           ()=> {
-            console.log('Chargement ...');
+            console.log('Loading ...');
           },
           (error) => {
-            console.log('Erreur de chargement : '+ error);
+            console.log('Error in loading : '+ error);
             reject();
           },
           ()=>{
