@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TranslateButtonComponent } from './translate-button.component';
+import { LanguageSettingComponent } from './language-setting.component';
 
-describe('TranslateButtonComponent', () => {
-  let component: TranslateButtonComponent;
-  let fixture: ComponentFixture<TranslateButtonComponent>;
+describe('LanguageSettingComponent', () => {
+  let component: LanguageSettingComponent;
+  let fixture: ComponentFixture<LanguageSettingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TranslateButtonComponent ]
+      declarations: [ LanguageSettingComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TranslateButtonComponent);
+    fixture = TestBed.createComponent(LanguageSettingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
