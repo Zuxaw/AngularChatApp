@@ -14,6 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { MessageComponent } from './chat/message/message.component';
+import { LanguageSettingComponent } from './language-setting/language-setting.component';
 
 
 
@@ -36,7 +37,8 @@ const appRoutes: Routes= [
     HomeComponent,
     ChatComponent,
     ProfileComponent,
-    MessageComponent
+    MessageComponent,
+    LanguageSettingComponent
   ],
   imports: [
 
