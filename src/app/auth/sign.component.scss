@@ -1,13 +1,15 @@
 .container{
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
     height: 100%;
     background-image: url('../../assets/background.png');
     background-size: cover;
     margin-left: 90px;
 
+
     .sign, form{
+      margin-top: 8%;
         background-color:#23272a;
         color: #ffff;
         display: flex;

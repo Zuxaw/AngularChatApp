@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from './chat/chat.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
+import { MessageComponent } from './chat/message/message.component';
 
 
 
@@ -34,7 +35,8 @@ const appRoutes: Routes= [
     HeaderComponent,
     HomeComponent,
     ChatComponent,
-    ProfileComponent
+    ProfileComponent,
+    MessageComponent
   ],
   imports: [
 

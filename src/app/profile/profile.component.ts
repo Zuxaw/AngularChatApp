@@ -64,9 +64,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   onSubmit(form: NgForm){
     if(this.file){
       this.onUploadFile(this.file);
-    }else{
-      this.userService.updateProfile(form.value['username']);
     }
+    this.userService.updateProfile(form.value['username']);
     this.editMode = false;
   }
 
