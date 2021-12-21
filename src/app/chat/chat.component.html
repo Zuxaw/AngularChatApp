@@ -1,3 +1,7 @@
 <div class="container">
   <p>chat works!</p>
+  <form (ngSubmit)="handleSubmit($event)" class="msgInputArea" >
+    <input placeholder="Enter message" name="msg" [(ngModel)]="msgArea"
+    (keyup)="handleKeyUp($event)" />
+  </form>
 </div>

@@ -17,8 +17,8 @@ export class MessageService {
     this.messageSubject.next(this.messages);
   }
 
-  saveMessage(){
-    firebase.database().ref('/messaage').set(this.messages);
+  saveMessage(newMessage: Message){
+    firebase.database().ref('/message').push(newMessage);
   }
 
   getMessage(){
@@ -31,7 +31,7 @@ export class MessageService {
 
   sendNewMessage(newMessage: Message){
     this.messages.push(newMessage);
-    this.saveMessage();
+    this.saveMessage(newMessage);
     this.emitMessage();
   }
 }
