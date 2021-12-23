@@ -42,7 +42,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   initMessage(){
     if(this.user.displayName){
-      this.msg.createdAt = Date.now();
+      this.msg.createdAt = (new Date).toString();
       this.msg.displayName = this.user.displayName;
       this.msg.email = this.user.email;
       this.msg.photoURL = this.user.photoURL;
@@ -66,6 +66,8 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.handleSubmit(e);
      }
   }
+
+  
 
   ngOnDestroy(){
     this.userSubscription.unsubscribe();

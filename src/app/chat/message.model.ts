@@ -1,5 +1,5 @@
 export interface Message{
-    createdAt?: number,
+    createdAt?: string,
     displayName: string,
     photoURL?: string,
     text: string,

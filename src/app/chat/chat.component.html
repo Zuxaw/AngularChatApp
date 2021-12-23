@@ -1,5 +1,10 @@
-<div class="container">
-  <p>chat works!</p>
+<div class="container" #scrollframe>
+  <div class="chat-header">
+    <h1>Welcome to STKS Messenger</h1>
+    <p>This is the beginning of this chat</p>
+    <hr>
+  </div>
+  <app-message></app-message>
   <form (ngSubmit)="handleSubmit($event)" class="msgInputArea" >
     <input placeholder="Enter message" name="msg" [(ngModel)]="msgArea"
     (keyup)="handleKeyUp($event)" />

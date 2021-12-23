@@ -24,7 +24,7 @@ export class MessageService {
   getMessage(){
     firebase.database().ref('/message')
       .on('value', (data) => {
-        this.messages = data.val() ? data.val(): [];
+        this.messages = data.val() ? Object.values(data.val()): [];
         this.emitMessage();
       });
   }
