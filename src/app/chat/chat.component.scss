@@ -4,8 +4,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   margin-left: 90px;
+  overflow-y:scroll; 
+  height: 100%;
 
   .chat-header {
     
@@ -41,14 +42,14 @@
 
   .msgInputArea {
     position: fixed;
-    bottom: 1%;
+    background-color: #2c2f33;
+    bottom: 0px;
     display: flex;
-    justify-content: center;
-    left: 110px;
-    right: 20px;
-
+    align-items: center;
+    width: 100%;
     input {
-      width: 100%;
+      margin-left: 30px;
+      width: 85%;
       background-color: #23272a;
       height: 35px;
       border-radius: 8px;
@@ -56,6 +57,24 @@
       color: #ffff;
       padding-left: 10px;
       outline: none;
+    }
+    button {
+      font-family: 'Cascadia code';
+      font-weight: bold;
+      color: black;
+      margin: 10px;
+      margin-right: 30px;
+      width: 100px;
+      height: 35px;
+      border-radius: 5px;
+      border-color: darkseagreen;
+      background-color: lightgreen;
+      cursor: pointer;
+      transition: transform 330ms ease-in-out;
+    }
+
+    button:hover {
+      transform: scale(1.1);
     }
   }
 }

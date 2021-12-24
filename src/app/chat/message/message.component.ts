@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Message } from '../message.model';
 import { MessageService } from '../message.service';
@@ -8,12 +8,13 @@ import { MessageService } from '../message.service';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss']
 })
-export class MessageComponent implements OnInit, OnDestroy {
+export class MessageComponent implements OnInit, OnDestroy,AfterViewInit{
 
   messages: Message[];
   messageSubscription: Subscription;
 
   constructor(private messageService: MessageService) { 
+    
   }
 
   ngOnInit(): void {
@@ -24,16 +25,14 @@ export class MessageComponent implements OnInit, OnDestroy {
     );
     this.messageService.getMessage();
     this.messageService.emitMessage();
-    console.log("hello worudo")
+  }
+
+  ngAfterViewInit(): void {
+    this.messageService.emitMessage();
   }
 
   ngOnDestroy(): void {
       this.messageSubscription.unsubscribe();
   }
 
-  onClick(){
-    console.log(this.messages[0].text);
-  }
-
-  
 }

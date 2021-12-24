@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../profile/user-service';
 import { User } from '../profile/user.model';
@@ -11,7 +11,7 @@ import { MessageService } from './message.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit, OnDestroy {
-
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   // User section
   user: User;
   userSubscription: Subscription;
