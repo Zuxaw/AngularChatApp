@@ -43,38 +43,41 @@
   .msgInputArea {
     position: fixed;
     background-color: #2c2f33;
-    bottom: 0px;
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: center;
     width: 100%;
+    bottom: 0px;
+
     input {
-      margin-left: 30px;
-      width: 85%;
-      background-color: #23272a;
-      height: 35px;
+      position: relative;
+      margin-bottom: 20px;
+      margin-right: 100px;
+      width: 80%;
+      background-color: #424549;
+      height: 40px;
       border-radius: 8px;
-      border: 1px solid black;
+      border: none;
       color: #ffff;
       padding-left: 10px;
       outline: none;
     }
-    button {
-      font-family: 'Cascadia code';
-      font-weight: bold;
-      color: black;
-      margin: 10px;
-      margin-right: 30px;
-      width: 100px;
-      height: 35px;
-      border-radius: 5px;
-      border-color: darkseagreen;
-      background-color: lightgreen;
+
+    .send{
+      margin-top: 8px;
       cursor: pointer;
+      font-size: 1.3rem;
+      position: fixed;
+      right: 9%;
+      color: whitesmoke;
+      border:none;
+      background: none;
       transition: transform 330ms ease-in-out;
     }
-
     button:hover {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
   }
 }
+
+
