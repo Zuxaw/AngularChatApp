@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../profile/user-service';
 import { User } from '../profile/user.model';
@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   // User section
   user: User;
@@ -28,6 +28,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initProfile();
+    this.scrollToBottom();
   }
 
   initProfile(){
@@ -68,6 +69,15 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   
+  ngAfterViewChecked() {        
+    this.scrollToBottom();        
+  } 
+
+  scrollToBottom(): void {
+      try {
+          this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      } catch(err) { }                 
+  }
 
   ngOnDestroy(){
     this.userSubscription.unsubscribe();

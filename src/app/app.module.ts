@@ -14,6 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { MessageComponent } from './chat/message/message.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -45,7 +46,8 @@ const appRoutes: Routes= [
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
