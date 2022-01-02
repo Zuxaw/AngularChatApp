@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Message } from './message.model';
 import firebase from 'firebase/compat/app';
@@ -11,21 +11,23 @@ export class MessageService {
 
   messages:Message[] = [];
   messageSubject = new Subject<Message[]>();
-  constructor() { }
+  constructor(private zone: NgZone) { }
 
   emitMessage(){
     this.messageSubject.next(this.messages);
   }
 
   saveMessage(){
-    firebase.database().ref('/messaage').set(this.messages);
+    firebase.database().ref('/message').set(this.messages);
   }
 
   getMessage(){
     firebase.database().ref('/message')
       .on('value', (data) => {
-        this.messages = data.val() ? data.val(): [];
-        this.emitMessage();
+        this.zone.run(() => {
+          this.messages = data.val() ? Object.values(data.val()): [];
+          this.emitMessage();
+        });
       });
   }
 

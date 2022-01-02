@@ -1,1 +1,10 @@
-<p>message works!</p>
+<div *ngFor="let message of messages" class="message-box">
+    <img [src]="message.photoURL" class="profile-picture">
+    <div class="content-box">
+        <div class="information">
+            <p class="username">{{message.displayName}}</p>
+            <p class="date">{{message.createdAt | date: 'short'}}</p>
+        </div>
+        <p class="text">{{message.text}}</p>
+    </div>
+</div>

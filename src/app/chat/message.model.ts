@@ -1,7 +1,7 @@
 export interface Message{
-    createdAt: Date,
+    createdAt?: string,
     displayName: string,
-    photoURL: string,
+    photoURL?: string,
     text: string,
-    email: string
+    email?: string
 }

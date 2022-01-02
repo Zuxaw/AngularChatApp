@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.initProfile()
   }
 
-  async initProfile(){
+  initProfile(){
     this.userSubscription = this.userService.userSubject.subscribe(
       (user: User) => {
         this.userLoad = true;

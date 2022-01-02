@@ -1,0 +1,44 @@
+.message-box{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    .profile-picture {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    
+    .content-box{
+        width: 95%;
+        margin-left: 20px;
+        .information{
+            height: 20px;
+            display: flex;
+            align-items: baseline;
+            p {
+                margin-right: 10px;
+            }
+            .username{
+                color: deeppink;
+                font-size: 1rem;
+                font-weight: 500;
+            }
+            .date{
+                font-size: 0.8rem;
+                font-style: italic;
+                color: darkgray;
+            }
+        }
+    }
+    .text{
+        margin-top: 20px;
+        font-size: 0.8rem;
+        font-weight: 50;
+    }
+}
+
+
+.message-box:hover{
+    background-color: #23272a;
+}

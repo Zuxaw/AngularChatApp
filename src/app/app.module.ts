@@ -15,6 +15,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { MessageComponent } from './chat/message/message.component';
 import { LanguageSettingComponent } from './language-setting/language-setting.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -47,7 +48,8 @@ const appRoutes: Routes= [
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
