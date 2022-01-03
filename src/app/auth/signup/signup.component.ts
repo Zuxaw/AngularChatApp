@@ -18,12 +18,41 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
   errorMessage: string;
 
+  // begin translation variables
+  pageText = [
+    {key : "createAccount", text :
+    "Create your account"},
+    {key : "welcomingText", text :
+    "We're so excited to have you with us"},
+    {key : "email", text :
+    "Email"},
+    {key : "password", text :
+    "Password"},
+    {key : "signUp", text :
+    "Sign Up"},
+    {key : "alreadyHaveAccount", text :
+    "You already have an account ?"}
+  ]
+
+  currentPageText = this.pageText;
+  languageSubscription: Subscription;
+  // end translation variables
+
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private translationService: TranslationService) { }
 
   ngOnInit(): void {
     this.initForm();
+
+    // begin translation subscription
+    this.languageSubscription = this.translationService.current_language_change.subscribe(
+      (value) => {
+        this.translationService.onTranslatePage(this.pageText,this.currentPageText)
+      }
+    )
+    // end translation subscription
 
   }
 
@@ -45,6 +74,12 @@ export class SignupComponent implements OnInit {
         this.errorMessage = error;
       }
     )
-}
+  }
+
+  // begin translation functions
+  getTextForTranslation(key: string){
+    return this.currentPageText.find(currentPageText => currentPageText.key === key).text
+  }
+  // end translation functions
 
 }

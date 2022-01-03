@@ -1,18 +1,18 @@
 <div class="container">
     <div class="sign">
-        <h2>Create your account</h2>
-        <p>We're so excited to have you with us</p>
+        <h2>{{getTextForTranslation("createAccount")}}</h2>
+        <p>{{getTextForTranslation("welcomingText")}}</p>
         <form [formGroup]="signUpForm"  (ngSubmit)="onSubmit()">
             <div class="form-box">
-                <label for="email">Email</label>
+                <label for="email">{{getTextForTranslation("email")}}</label>
                 <input type="text" id="email" class="form-control" formControlName="email">
             </div>
             <div class="form-box">
-                <label for="password">Password</label>
+                <label for="password">{{getTextForTranslation("password")}}</label>
                 <input type="password" id="password" class="form-control" formControlName="password">
             </div>
-            <button type="submit">SignUp</button>
-            <a routerLink="/auth/signin">You already have an account ?</a>
+            <button type="submit">{{getTextForTranslation("signUp")}}</button>
+            <a routerLink="/auth/signin">{{getTextForTranslation("alreadyHaveAccount")}}</a>
         </form>
         <p class="text-danger">{{ errorMessage }}</p>
     </div>
