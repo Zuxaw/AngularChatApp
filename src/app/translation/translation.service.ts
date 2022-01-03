@@ -75,4 +75,21 @@ export class TranslationService {
     this.emitLanguage();
   }
 
+  onTranslate(pageText: any[], currentPageText: any[]){
+    return new Promise ( resolve => {
+      if(this.current_language !== this.default_language){
+        pageText.forEach((elementText, index) => {
+          this.fetchTranslation(elementText.text,this.current_language).subscribe({
+            next : (response) => {
+              resolve(currentPageText[index].text = Object.values(response)[0][0].text);
+            },
+            error : (error) => {
+              console.log(error);
+            }
+          });
+        });
+      }
+    });
+  }
+
 }
