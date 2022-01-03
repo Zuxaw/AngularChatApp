@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
+// begin translation imports
+import { Subscription } from 'rxjs';
+import { TranslationService } from '../../translation/translation.service';
+// end translation imports
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

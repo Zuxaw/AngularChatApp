@@ -1,18 +1,18 @@
 <div class="container">
     <div class="sign">
-        <h2>Welcome back!</h2>
-        <p>Nice to see you again</p>
+        <h2>{{getTextForTranslation("welcomeBack")}}</h2>
+        <p>{{getTextForTranslation("niceToSeeYouAgain")}}</p>
         <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <div class="form-box">
-                <label for="email">Email</label>
+                <label for="email">{{getTextForTranslation("email")}}</label>
                 <input type="text" id="email" class="form-control" formControlName="email">
             </div>
             <div class="form-box">
-                <label for="password">Password</label>
+                <label for="password">{{getTextForTranslation("password")}}</label>
                 <input type="password" id="password" class="form-control" formControlName="password">
             </div>
-            <button type="submit">Login</button>
-            <a routerLink="/auth/signup">You don't have any account ?</a>
+            <button type="submit">{{getTextForTranslation("login")}}</button>
+            <a routerLink="/auth/signup">{{getTextForTranslation("youDontHaveAnyAccount")}}</a>
             <p class="text-danger">{{ errorMessage }}</p>
         </form>
     </div>
