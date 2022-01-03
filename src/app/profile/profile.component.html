@@ -1,24 +1,24 @@
 <div class="container">
   <div class="profile-box">
-    <h1>User Profile</h1>
+    <h1>{{getTextForTranslation("userProfile")}}</h1>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="profile-picture-box">
         <img *ngIf="user.photoURL" [src]="user.photoURL" class="profile-picture">
       </div>
       <div class="information-box">
         <div class="upload-box" *ngIf="editMode">
-          <p>Upload a new profile picture</p>
+          <p>{{getTextForTranslation("uploadNewPicture")}}</p>
           <input type="file" (change)="detectFiles($event)" class="inputfile" accept="image/*">
         </div>
-        <p *ngIf="!editMode">UserName: {{user.displayName}}</p>
+        <p *ngIf="!editMode">{{getTextForTranslation("username")}}: {{user.displayName}}</p>
         <div class="user-name-box" *ngIf="editMode">
-          <label for="username">UserName: </label>
+          <label for="username">{{getTextForTranslation("username")}}: </label>
           <input type="text" id="username" name="username" [ngModel]="user.displayName">
         </div>
         <div class="button-box">
-          <button (click)="onEdit()" *ngIf="!editMode">Edit</button>
-          <button type="submit" *ngIf="editMode">Save</button>
-          <button (click)="onCancel()" *ngIf="editMode">Cancel</button>
+          <button (click)="onEdit()" *ngIf="!editMode">{{getTextForTranslation("edit")}}</button>
+          <button type="submit" *ngIf="editMode">{{getTextForTranslation("save")}}</button>
+          <button (click)="onCancel()" *ngIf="editMode">{{getTextForTranslation("cancel")}}</button>
         </div>
       </div>
     </form>

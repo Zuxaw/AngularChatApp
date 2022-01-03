@@ -4,8 +4,12 @@ import firebase from 'firebase/compat/app';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import 'firebase/compat/auth';
 import { User } from './user.model';
+
+// begin translation imports
 import { Subscription } from 'rxjs';
 import { TranslationService } from '../translation/translation.service';
+// end translation imports
+
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -18,6 +22,26 @@ export class ProfileComponent implements OnInit, OnDestroy {
   user: User;
   userLoad: boolean = false;
   userSubscription: Subscription;
+
+  // begin translation variables
+  pageText = [
+    {key : "userProfile", text :
+    "User Profile"},
+    {key : "uploadNewPicture", text :
+    "Upload a new profile picture"},
+    {key : "username", text :
+    "Username"},
+    {key : "edit", text :
+    "Edit"},
+    {key : "save", text :
+    "Save"},
+    {key : "cancel", text :
+    "Cancel"}
+  ]
+
+  currentPageText = this.pageText;
+  languageSubscription: Subscription;
+  // end translation variables
 
   //edit mode variable :
   editMode: boolean = false;
@@ -40,6 +64,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
       }
     });
     this.initProfile()
+
+    // begin translation subscription
+    this.languageSubscription = this.translationService.current_language_change.subscribe(
+      (value) => {
+        this.translationService.onTranslatePage(this.pageText,this.currentPageText)
+      }
+    )
+    // end translation subscription
   }
 
   initProfile(){
@@ -97,6 +129,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.userSubscription.unsubscribe();
   }
+
+  // begin translation functions
+  getTextForTranslation(key: string){
+    return this.currentPageText.find(currentPageText => currentPageText.key === key).text
+  }
+  // end translation functions
 
 
 }
