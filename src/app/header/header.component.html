@@ -1,12 +1,12 @@
 <nav class="nav-bar">
     <li (mouseover)="onSelect('home')" (mouseout)="onSelect(null)" *ngIf="!isAuth">
         <a routerLink="home" routerLinkActive="active"><i class="fas fa-home"></i></a>
-        <p *ngIf="selected==='home'" class="description">Home</p>
+        <p *ngIf="selected==='home'" class="description">{{getTextForTranslation("home")}}</p>
     </li>
     <!-- language setting /begins-->
     <li (mouseover)="onSelect('language')" (mouseout)="onSelect(null)" (click)="onSelectLanguage()">
       <a [ngClass]="{'translated': language_selected}"><i class="fas fa-language"></i></a>
-      <p *ngIf="selected==='language'" class="description" >Language</p>
+      <p *ngIf="selected==='language'" class="description" >{{getTextForTranslation("language")}}</p>
       <p *ngIf="language_selected" class="description translation">
         <app-language-setting></app-language-setting>
       </p>
@@ -14,24 +14,24 @@
   <!-- language setting /ends-->
     <li (mouseover)="onSelect('profile')" (mouseout)="onSelect(null)" *ngIf="isAuth">
         <a routerLink="profile" routerLinkActive="active" class="profile"><i class="fas fa-user"></i></a>
-        <p *ngIf="selected==='profile'" class="description">Profile</p>
+        <p *ngIf="selected==='profile'" class="description">{{getTextForTranslation("profile")}}</p>
     </li>
     <li (mouseover)="onSelect('message')" (mouseout)="onSelect(null)" *ngIf="isAuth">
         <a routerLink="chat" routerLinkActive="active"><i class="fas fa-comment-alt"></i></a>
-        <p *ngIf="selected==='message'" class="description">Chat</p>
+        <p *ngIf="selected==='message'" class="description">{{getTextForTranslation("chat")}}</p>
     </li>
     <div class="bot">
         <li (mouseover)="onSelect('signIn')" (mouseout)="onSelect(null)" *ngIf="!isAuth">
           <a routerLink="auth/signin" routerLinkActive="active"><i class="fas fa-sign-in-alt"></i></a>
-          <p *ngIf="selected==='signIn'" class="description">SignIn</p>
+          <p *ngIf="selected==='signIn'" class="description">{{getTextForTranslation("signIn")}}</p>
         </li>
         <li (mouseover)="onSelect('signUp')" (mouseout)="onSelect(null)" *ngIf="!isAuth">
             <a routerLink="auth/signup" routerLinkActive="active"><i class="fas fa-user-plus"></i></a>
-            <p *ngIf="selected==='signUp'" class="description">SignUp</p>
+            <p *ngIf="selected==='signUp'" class="description">{{getTextForTranslation("signUp")}}</p>
         </li>
         <li (mouseover)="onSelect('LogOut')" (mouseout)="onSelect(null)" *ngIf="isAuth">
             <a (click)="onLogOut()"><i class="fas fa-sign-out-alt"></i></a>
-            <p *ngIf="selected==='LogOut'" class="description logout">LogOut</p>
+            <p *ngIf="selected==='LogOut'" class="description logout">{{getTextForTranslation("logOut")}}</p>
         </li>
     </div>
 </nav>

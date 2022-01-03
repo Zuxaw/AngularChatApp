@@ -4,6 +4,11 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { Router } from '@angular/router';
 
+// begin translation imports
+import { Subscription } from 'rxjs';
+import { TranslationService } from '../translation/translation.service';
+// end translation imports
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,16 +23,67 @@ export class HeaderComponent implements OnInit {
 
   // language settings variables /ends
 
+  // begin translation variables
+  pageText = [
+    {key : "home", text :
+    "Home"},
+    {key : "language", text :
+    "Language"},
+    {key : "profile", text :
+    "Profile"},
+    {key : "chat", text :
+    "Chat"},
+    {key : "signIn", text :
+    "Sign In"},
+    {key : "signUp", text :
+    "Sign Up"},
+    {key : "logOut", text :
+    "Log Out"}
+  ]
+
+  currentPageText = this.pageText;
+  languageSubscription: Subscription;
+  // end translation variables
+
 
   constructor(private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private translationService: TranslationService) {
    }
 
   ngOnInit(): void {
     firebase.auth().onAuthStateChanged(
       (user) =>  this.isAuth = Boolean(user)
     );
+    // begin translation subscription
+    this.languageSubscription = this.translationService.current_language_change.subscribe(
+      (value) => {
+        this.onTranslate()
+      }
+    )
+    // end translation subscription
   }
+
+  // begin translation functions
+  getTextForTranslation(key: string){
+    return this.currentPageText.find(currentPageText => currentPageText.key === key).text
+  }
+
+  onTranslate(){
+    if(this.translationService.current_language !== this.translationService.default_language){
+      this.pageText.forEach((elementText, index) => {
+        this.translationService.fetchTranslation(elementText.text,this.translationService.current_language).subscribe({
+          next : (response) => {
+            this.currentPageText[index].text = Object.values(response)[0][0].text;
+          },
+          error : (error) => {
+            console.log(error);
+          }
+        })
+      })
+    }
+  }
+  // end translation functions
 
   onSelect(name: string){
     if(this.language_selected && name === "language"){

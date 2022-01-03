@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
+// begin translation imports
 import { Subscription } from 'rxjs';
 import { TranslationService } from '../translation/translation.service';
+// end translation imports
 
 @Component({
   selector: 'app-home',
