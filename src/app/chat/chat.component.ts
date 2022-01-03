@@ -2,6 +2,7 @@ import { AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild }
 import { Subscription } from 'rxjs';
 import { UserService } from '../profile/user-service';
 import { User } from '../profile/user.model';
+import { TranslationService } from '../translation/translation.service';
 import { Message } from './message.model';
 import { MessageService } from './message.service';
 
@@ -23,12 +24,32 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     text:'',
   }
 
+    // begin translation variables
+    pageText = [
+      {key : "title", text :
+      "Welcome to STKS Messenger"},
+      {key : "welcomingText", text :
+      "This is the beginning of this chat"}
+    ]
+  
+    currentPageText = this.pageText;
+    languageSubscription: Subscription;
+    // end translation variables
+
   constructor(private messageService: MessageService,
-              private userService :UserService) { }
+              private userService :UserService,
+              private translationService: TranslationService) { }
 
   ngOnInit(): void {
     this.initProfile();
     this.scrollToBottom();
+    // begin translation subscription
+    this.languageSubscription = this.translationService.current_language_change.subscribe(
+      (value) => {
+        this.translationService.onTranslatePage(this.pageText,this.currentPageText)
+      }
+    )
+    // end translation subscription
   }
 
   initProfile(){
@@ -77,6 +98,11 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
       try {
           this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
       } catch(err) { }                 
+  }
+
+  // begin translation functions
+  getTextForTranslation(key: string){
+    return this.currentPageText.find(currentPageText => currentPageText.key === key).text
   }
 
   ngOnDestroy(){

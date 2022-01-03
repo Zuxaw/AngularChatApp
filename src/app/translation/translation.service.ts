@@ -75,7 +75,7 @@ export class TranslationService {
     this.emitLanguage();
   }
 
-  onTranslate(pageText: any[], currentPageText: any[]){
+  onTranslatePage(pageText: any[], currentPageText: any[]){
     return new Promise ( resolve => {
       if(this.current_language !== this.default_language){
         pageText.forEach((elementText, index) => {

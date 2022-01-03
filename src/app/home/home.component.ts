@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     // begin translation subscription
     this.languageSubscription = this.translationService.current_language_change.subscribe(
       (value) => {
-        this.translationService.onTranslate(this.pageText,this.currentPageText)
+        this.translationService.onTranslatePage(this.pageText,this.currentPageText)
       }
     )
     // end translation subscription
