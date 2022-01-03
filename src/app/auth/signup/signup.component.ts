@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
     "You already have an account ?"}
   ]
 
-  currentPageText = this.pageText;
+  currentPageText = JSON.parse(JSON.stringify(this.pageText));
   languageSubscription: Subscription;
   // end translation variables
 

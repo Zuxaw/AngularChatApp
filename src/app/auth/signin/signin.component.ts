@@ -33,7 +33,7 @@ export class SigninComponent implements OnInit {
     "You don't have any account ?"}
   ]
 
-  currentPageText = this.pageText;
+  currentPageText = JSON.parse(JSON.stringify(this.pageText));
   languageSubscription: Subscription;
   // end translation variables
 

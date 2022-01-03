@@ -53,9 +53,9 @@ export class TranslationService {
 
 
   fetchTranslation(translationText: string, targerLanguage: string){
-    const deeplUrl = "https://api-free.deepl.com/v2/translate?auth_key=caf39346-bda1-c2ce-ad63-e3c9f540e0a4:fx"
+    const deeplUrl = "https://api-free.deepl.com/v2/translate?auth_key=2c7d2e73-4a89-e90e-e373-16d19e7402bf:fx"
     const body = new HttpParams()
-      .set('auth_key','caf39346-bda1-c2ce-ad63-e3c9f540e0a4:fx')
+      .set('auth_key','2c7d2e73-4a89-e90e-e373-16d19e7402bf:fx')
       .set('text', translationText)
       .set('target_lang',targerLanguage);
 
