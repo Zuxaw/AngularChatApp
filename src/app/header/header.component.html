@@ -3,6 +3,15 @@
         <a routerLink="home" routerLinkActive="active"><i class="fas fa-home"></i></a>
         <p *ngIf="selected==='home'" class="description">Home</p>
     </li>
+    <!-- language setting /begins-->
+    <li (mouseover)="onSelect('language')" (mouseout)="onSelect(null)" (click)="onSelectLanguage()">
+      <a [ngClass]="{'translated': language_selected}"><i class="fas fa-language"></i></a>
+      <p *ngIf="selected==='language'" class="description" >Language</p>
+      <p *ngIf="language_selected" class="description translation">
+        <app-language-setting></app-language-setting>
+      </p>
+    </li>
+  <!-- language setting /ends-->
     <li (mouseover)="onSelect('profile')" (mouseout)="onSelect(null)" *ngIf="isAuth">
         <a routerLink="profile" routerLinkActive="active" class="profile"><i class="fas fa-user"></i></a>
         <p *ngIf="selected==='profile'" class="description">Profile</p>

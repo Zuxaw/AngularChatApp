@@ -14,6 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { ProfileComponent } from './profile/profile.component';
 import { MessageComponent } from './chat/message/message.component';
+import { LanguageSettingComponent } from './language-setting/language-setting.component';
 import { CommonModule } from '@angular/common';
 
 
@@ -24,6 +25,8 @@ const appRoutes: Routes= [
   {path: 'home', component: HomeComponent},
   {path: 'chat',component: ChatComponent},
   {path: 'profile',component: ProfileComponent},
+  {path: 'message',component: MessageComponent},
+  {path: 'language-settings',component: LanguageSettingComponent},
   {path: ' ', redirectTo: 'home'},
   {path: '**', redirectTo: 'home'}
 ]
@@ -37,7 +40,8 @@ const appRoutes: Routes= [
     HomeComponent,
     ChatComponent,
     ProfileComponent,
-    MessageComponent
+    MessageComponent,
+    LanguageSettingComponent
   ],
   imports: [
 

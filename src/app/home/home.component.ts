@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TranslationService } from '../translation/translation.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  // begin translation variables
+  pageText = [
+    {key : "title", text :
+    "Your place to chat"},
+    {key : "welcomingText", text :
+    "Where ever you are you can spend your time with your friends.\
+    STKS Messenger allows you to get closer to your loved ones.\
+    Our goal makes it easy to talk every day."},
+    {key : "joinNow", text :
+    "Join now"}
+  ]
+
+  currentPageText = this.pageText;
+  languageSubscription: Subscription;
+  // end translation variables
+
+  constructor(private translationService: TranslationService) { }
 
   ngOnInit(): void {
+    // begin translation subscription
+    this.languageSubscription = this.translationService.current_language_change.subscribe(
+      (value) => {
+        this.onTranslate()
+      }
+    )
+    // end translation subscription
   }
+
+  // begin translation functions
+  getTextForTranslation(key: string){
+    return this.currentPageText.find(currentPageText => currentPageText.key === key).text
+  }
+
+  onTranslate(){
+    if(this.translationService.current_language !== this.translationService.default_language){
+      this.pageText.forEach((elementText, index) => {
+        this.translationService.fetchTranslation(elementText.text,this.translationService.current_language).subscribe({
+          next : (response) => {
+            this.currentPageText[index].text = Object.values(response)[0][0].text;
+          },
+          error : (error) => {
+            console.log(error);
+          }
+        })
+      })
+    }
+  }
+  // end translation functions
 
 }
