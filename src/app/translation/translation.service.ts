@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,29 @@ export class TranslationService {
     "FR",
     "EN-GB",
     "EN-US",
-    "ES"
-
+    "ES",
+    "BG",
+    "CS",
+    "DA",
+    "EL",
+    "ET",
+    "FI",
+    "HU",
+    "IT",
+    "JA",
+    "LT",
+    "LV",
+    "NL",
+    "PL",
+    "PT-BR",
+    "PT-PT",
+    "RO",
+    "RU",
+    "SK",
+    "SL",
+    "SV",
+    "ZH",
+    "DE",
   ];
 
   toTranslate?: string;
@@ -21,13 +43,19 @@ export class TranslationService {
 
   current_language = "FR"; // <-- temp because has to be linked with the profile setting on server
 
+  current_language_change: Subject<string> = new Subject<string>();
+
+  emitLanguage(){
+    this.current_language_change.next(this.current_language);
+  }
+
   constructor(private httpClient :HttpClient) { }
 
 
   fetchTranslation(translationText: string, targerLanguage: string){
-    const deeplUrl = "https://api-free.deepl.com/v2/translate?auth_key=4040bb49-6220-b183-2f26-27ea76565147:fx"
+    const deeplUrl = "https://api-free.deepl.com/v2/translate?auth_key=caf39346-bda1-c2ce-ad63-e3c9f540e0a4:fx"
     const body = new HttpParams()
-      .set('auth_key','4040bb49-6220-b183-2f26-27ea76565147:fx')
+      .set('auth_key','caf39346-bda1-c2ce-ad63-e3c9f540e0a4:fx')
       .set('text', translationText)
       .set('target_lang',targerLanguage);
 
@@ -38,22 +66,13 @@ export class TranslationService {
     return this.languages;
   }
 
+  getCurrentLanguage(){
+    return this.current_language;
+  }
+
   setCurrentLanguage(lang: string){
     this.current_language = lang;
+    this.emitLanguage();
   }
-
-  onTranslate(){
-    if(this.current_language !== this.default_language){
-      this.fetchTranslation(this.toTranslate,this.current_language).subscribe({
-        next : (response) => {
-          this.toTranslate = Object.values(response)[0][0].text;
-        },
-        error : (error) => {
-          console.log(error);
-        }
-      })
-    }
-  }
-
 
 }

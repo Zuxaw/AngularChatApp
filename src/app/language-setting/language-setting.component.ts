@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TranslationService } from '../translation/translation.service';
 
 @Component({
@@ -10,10 +11,10 @@ export class LanguageSettingComponent implements OnInit {
 
   languages = [];
 
+
   constructor(private translationService: TranslationService) { }
 
   ngOnInit(): void {
-
     this.languages = this.translationService.getLanguages();
 
   }
