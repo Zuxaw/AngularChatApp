@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   user: User;
   userLoad: boolean = false;
   userSubscription: Subscription;
+  isVisible: boolean = true;
 
   // begin translation variables
   pageText = [
@@ -52,7 +53,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(private userService :UserService,
               private httpClient :HttpClient,
               private translationService :TranslationService) {
+                setTimeout(
+                  () => {
+                    this.isVisible = true;
+                  }, 4000
+                );
+
   }
+
+
 
   ngOnInit(){
     firebase.auth().onAuthStateChanged( user => {
@@ -87,6 +96,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   onEdit(){
     this.editMode = !this.editMode
+    var visible = document.getElementById("hideDiv");
+    if (visible.style.visibility === "visible") {
+      visible.style.visibility = "hidden";
+    } else {
+      visible.style.display = "hidden"
+        setTimeout(() => {visible.style.visibility = "hidden", 4000})
+    }
   }
 
   onCancel(){
