@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     // begin translation subscription
     this.languageSubscription = this.translationService.current_language_change.subscribe(
       (value) => {
-        this.onTranslate()
+        this.translationService.onTranslate(this.pageText,this.currentPageText)
       }
     )
     // end translation subscription
@@ -44,21 +44,5 @@ export class HomeComponent implements OnInit {
   getTextForTranslation(key: string){
     return this.currentPageText.find(currentPageText => currentPageText.key === key).text
   }
-
-  onTranslate(){
-    if(this.translationService.current_language !== this.translationService.default_language){
-      this.pageText.forEach((elementText, index) => {
-        this.translationService.fetchTranslation(elementText.text,this.translationService.current_language).subscribe({
-          next : (response) => {
-            this.currentPageText[index].text = Object.values(response)[0][0].text;
-          },
-          error : (error) => {
-            console.log(error);
-          }
-        })
-      })
-    }
-  }
-  // end translation functions
 
 }
