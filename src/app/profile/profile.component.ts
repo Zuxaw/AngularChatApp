@@ -39,7 +39,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     {key : "cancel", text :
     "Cancel"},
     {key : "warning", text :
-    "The modifications can take some time.."}
+    "The modifications can take some time.."},
+    {key : "warning1", text :
+    "You should input username and profile picture"},
   ]
 
   currentPageText = JSON.parse(JSON.stringify(this.pageText));
@@ -91,14 +93,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   onEdit(){
-    this.editMode = !this.editMode
-    var visible = document.getElementById("hideDiv");
-    if (visible.style.visibility === "visible") {
-      visible.style.visibility = "hidden";
-    } else {
-      visible.style.display = "hidden"
-        setTimeout(() => {visible.style.visibility = "hidden", 4000})
-    }
+    this.editMode = !this.editMode;
   }
 
   onCancel(){
@@ -110,12 +105,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.onUploadFile(this.file);
     }
     this.userService.updateProfile(form.value['username']);
-    this.editMode = false;
+    if(form.valid && this.user.photoURL != undefined){
+      this.editMode = false;
+    }
   }
 
   onSubmitWarning(){
     this.warning = !this.warning;
-    setTimeout(() => this.warning = !this.warning, 4000);
+    setTimeout(() => this.warning = !this.warning, 2000);
   }
 
   onUploadFile(file: File){
