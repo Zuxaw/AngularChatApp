@@ -13,7 +13,7 @@
     </li>
   <!-- language setting /ends-->
     <li (mouseover)="onSelect('profile')" (mouseout)="onSelect(null)" *ngIf="isAuth">
-        <a routerLink="profile" routerLinkActive="active" class="profile"><i class="fas fa-user"></i></a>
+        <a routerLink="profile" routerLinkActive="active"><i class="fas fa-user"></i></a>
         <p *ngIf="selected==='profile'" class="description">{{getTextForTranslation("profile")}}</p>
     </li>
     <li (mouseover)="onSelect('message')" (mouseout)="onSelect(null)" *ngIf="isAuth">
