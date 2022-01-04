@@ -17,10 +17,10 @@
         </div>
         <div class="button-box">
           <button (click)="onEdit()" *ngIf="!editMode">{{getTextForTranslation("edit")}}</button>
-          <button type="submit" *ngIf="editMode">{{getTextForTranslation("save")}}</button>
+          <button type="submit" *ngIf="editMode" (click)="onSubmitWarning()">{{getTextForTranslation("save")}}</button>
           <button (click)="onCancel()" *ngIf="editMode">{{getTextForTranslation("cancel")}}</button>
         </div>
-        <div id="hideDiv" *ngIf="editMode">Hello world!</div>
+        <div class="warning" *ngIf="warning">{{getTextForTranslation("warning")}}</div>
       </div>
       
     </form>

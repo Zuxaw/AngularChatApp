@@ -37,7 +37,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     {key : "save", text :
     "Save"},
     {key : "cancel", text :
-    "Cancel"}
+    "Cancel"},
+    {key : "warning", text :
+    "The modifications can take some time.."}
   ]
 
   currentPageText = JSON.parse(JSON.stringify(this.pageText));
@@ -48,18 +50,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   editMode: boolean = false;
   fileIsUploading = false;
   fileUrl: string;
-  fileUploaded = false;
+  fileUploaded: boolean = false;
+  warning: boolean = false;
 
   constructor(private userService :UserService,
               private httpClient :HttpClient,
-              private translationService :TranslationService) {
-                setTimeout(
-                  () => {
-                    this.isVisible = true;
-                  }, 4000
-                );
-
-  }
+              private translationService :TranslationService) {}
 
 
 
@@ -117,6 +113,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.editMode = false;
   }
 
+  onSubmitWarning(){
+    this.warning = !this.warning;
+    setTimeout(() => this.warning = !this.warning, 4000);
+  }
 
   onUploadFile(file: File){
     this.fileIsUploading = true;
