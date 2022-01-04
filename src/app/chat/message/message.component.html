@@ -1,4 +1,4 @@
-<div *ngFor="let message of messages" class="message-box">
+<div *ngFor="let message of currentMessages,let index = index" class="message-box">
     <img [src]="message.photoURL" class="profile-picture">
     <div class="content-box">
         <div class="information">

@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     "Cancel"}
   ]
 
-  currentPageText = this.pageText;
+  currentPageText = JSON.parse(JSON.stringify(this.pageText));
   languageSubscription: Subscription;
   // end translation variables
 

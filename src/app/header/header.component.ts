@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     "Log Out"}
   ]
 
-  currentPageText = this.pageText;
+  currentPageText = JSON.parse(JSON.stringify(this.pageText));
   languageSubscription: Subscription;
   // end translation variables
 

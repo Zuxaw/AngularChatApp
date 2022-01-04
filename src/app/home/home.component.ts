@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     "Join now"}
   ]
 
-  currentPageText = this.pageText;
+  currentPageText = JSON.parse(JSON.stringify(this.pageText));
   languageSubscription: Subscription;
   // end translation variables
 

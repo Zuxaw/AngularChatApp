@@ -7,7 +7,8 @@ import { Subject } from 'rxjs';
 })
 
 export class TranslationService {
-
+  apiKey = "2c7d2e73-4a89-e90e-e373-16d19e7402bf:fx";
+  
   languages = [] = [
     "FR",
     "EN-GB",
@@ -41,7 +42,7 @@ export class TranslationService {
 
   default_language = "EN-GB";
 
-  current_language = "FR"; // <-- temp because has to be linked with the profile setting on server
+  current_language = "EN-GB"; // <-- temp because has to be linked with the profile setting on server
 
   current_language_change: Subject<string> = new Subject<string>();
 
@@ -53,9 +54,9 @@ export class TranslationService {
 
 
   fetchTranslation(translationText: string, targerLanguage: string){
-    const deeplUrl = "https://api-free.deepl.com/v2/translate?auth_key=caf39346-bda1-c2ce-ad63-e3c9f540e0a4:fx"
+    const deeplUrl = "https://api-free.deepl.com/v2/translate?auth_key=2c7d2e73-4a89-e90e-e373-16d19e7402bf:fx"
     const body = new HttpParams()
-      .set('auth_key','caf39346-bda1-c2ce-ad63-e3c9f540e0a4:fx')
+      .set('auth_key','2c7d2e73-4a89-e90e-e373-16d19e7402bf:fx')
       .set('text', translationText)
       .set('target_lang',targerLanguage);
 
@@ -87,6 +88,22 @@ export class TranslationService {
               console.log(error);
             }
           });
+        });
+      }
+    });
+  }
+
+  // Translate the lasted message
+  onTranslateMessage(pageText: any[], currentPageText: any[]){
+    return new Promise ( resolve => {
+      if(this.current_language !== this.default_language){
+        this.fetchTranslation(pageText[pageText.length-1].text,this.current_language).subscribe({
+          next : (response) => {
+            resolve(currentPageText[currentPageText.length-1].text = Object.values(response)[0][0].text);
+          },
+          error : (error) => {
+            console.log(error);
+          }
         });
       }
     });
