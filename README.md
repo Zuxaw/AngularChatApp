@@ -28,17 +28,6 @@ Website link : https://nginx-stks-4wwu2rgz4q-ew.a.run.app/
 2. Unix :
 `export NODE_OPTIONS=--openssl-legacy-provider`
 
-### Some screenshot :
-![image](https://user-images.githubusercontent.com/82362374/148092833-fd698149-742b-4002-99c6-ee63b360d3bd.png)
-![image](https://user-images.githubusercontent.com/82362374/148092952-cab29cd9-d8bd-4dbb-9caa-14275068b557.png)
-![image](https://user-images.githubusercontent.com/82362374/148093187-21e1b3c0-70cc-4ac8-8ddd-0064361c63e3.png)
-![image](https://user-images.githubusercontent.com/82362374/148093439-e0c2e669-98c7-4bb3-9a1b-cb3e6d9f6705.png)
-
-
-
-
-
-
 
 
 ### Copyrights
