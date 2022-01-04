@@ -20,7 +20,7 @@
           <button type="submit" *ngIf="editMode">{{getTextForTranslation("save")}}</button>
           <button (click)="onCancel()" *ngIf="editMode">{{getTextForTranslation("cancel")}}</button>
         </div>
-        <div id="hideDiv" visibility="visible" *ngIf="editMode">Hello world!</div>
+        <div id="hideDiv" *ngIf="editMode">Hello world!</div>
       </div>
       
     </form>
