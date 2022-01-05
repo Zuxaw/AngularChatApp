@@ -43,6 +43,8 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   ngOnInit(): void {
     this.initProfile();
     this.scrollToBottom();
+
+    this.translationService.onTranslatePage(this.pageText,this.currentPageText);
     // begin translation subscription
     this.languageSubscription = this.translationService.current_language_change.subscribe(
       (value) => {

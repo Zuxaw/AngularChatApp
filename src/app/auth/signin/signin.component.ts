@@ -44,7 +44,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-
+    this.translationService.onTranslatePage(this.pageText,this.currentPageText);
     // begin translation subscription
     this.languageSubscription = this.translationService.current_language_change.subscribe(
       (value) => {

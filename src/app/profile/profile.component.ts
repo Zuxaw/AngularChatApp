@@ -72,6 +72,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     });
     this.initProfile()
 
+    this.translationService.onTranslatePage(this.pageText,this.currentPageText);
     // begin translation subscription
     this.languageSubscription = this.translationService.current_language_change.subscribe(
       (value) => {

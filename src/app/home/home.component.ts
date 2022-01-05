@@ -31,10 +31,11 @@ export class HomeComponent implements OnInit {
   constructor(private translationService: TranslationService) { }
 
   ngOnInit(): void {
+    this.translationService.onTranslatePage(this.pageText,this.currentPageText);
     // begin translation subscription
     this.languageSubscription = this.translationService.current_language_change.subscribe(
       (value) => {
-        this.translationService.onTranslatePage(this.pageText,this.currentPageText)
+        this.translationService.onTranslatePage(this.pageText,this.currentPageText);
       }
     )
     // end translation subscription
