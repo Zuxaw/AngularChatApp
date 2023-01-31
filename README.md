@@ -1,7 +1,10 @@
 # AngularChatApp
 Simple chat system with angular frameworks and firebase for the backend ( School Project) + Translation in real time with AI ( DeepL API )
 
-Website link : https://nginx-stks-4wwu2rgz4q-ew.a.run.app/
+<img width="1495" alt="image" src="https://user-images.githubusercontent.com/82362374/215721475-1fdb6138-b236-4809-a12e-123922baf222.png">
+<img width="1425" alt="image" src="https://user-images.githubusercontent.com/82362374/215721887-9f064a6a-0ea3-4822-a127-0969deab4eed.png">
+<img width="737" alt="image" src="https://user-images.githubusercontent.com/82362374/215721930-c2aa9070-8f3e-4a7c-b594-7ff31489c42f.png">
+
 
 ## Instalation guide :
 
